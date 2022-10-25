@@ -20,12 +20,12 @@ class Datasets(object):
     OPENIMAGES = 'openimages'
     CITYSCAPES = 'cityscapes'
     JETS = 'jetimages'
-
+    YASSINE = 'yassine'
 class DatasetPaths(object):
-    OPENIMAGES = 'data/openimages'
+    OPENIMAGES = ''#'data/openimages'
     CITYSCAPES = ''
     JETS = ''
-
+    YASSINE = "C:/Users/chedl/Desktop/TSAWER YASSINE"
 class directories(object):
     experiments = 'experiments'
 
@@ -42,8 +42,8 @@ class args(object):
     save_interval = 50000
     gpu = 0
     multigpu = True
-    dataset = Datasets.OPENIMAGES
-    dataset_path = DatasetPaths.OPENIMAGES
+    dataset = Datasets.YASSINE
+    dataset_path = DatasetPaths.YASSINE
     shuffle = True
 
     # GAN params

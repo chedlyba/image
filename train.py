@@ -55,7 +55,8 @@ def optimize_compression_loss(compression_loss, amortization_opt, hyperlatent_li
     compression_loss.backward()
     amortization_opt.step()
     hyperlatent_likelihood_opt.step()
-    amortization_opt.zero_grad()
+    amortization_opt.zero_g
+    rad()
     hyperlatent_likelihood_opt.zero_grad()
 
 def test(args, model, epoch, idx, data, test_data, test_bpp, device, epoch_test_loss, storage, best_test_loss, 
