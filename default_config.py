@@ -17,15 +17,15 @@ class ModelModes(object):
     EVALUATION = 'evaluation'  # actual entropy coding
 
 class Datasets(object):
-    OPENIMAGES = 'openimages'
-    CITYSCAPES = 'cityscapes'
-    JETS = 'jetimages'
-    YASSINE = 'yassine'
+   # OPENIMAGES = 'openimages'
+   # CITYSCAPES = 'cityscapes'
+   # JETS = 'jetimages'
+   INSATPRESS = 'insatpress'
 class DatasetPaths(object):
-    OPENIMAGES = ''#'data/openimages'
-    CITYSCAPES = ''
-    JETS = ''
-    YASSINE = "C:/Users/chedl/Desktop/TSAWER YASSINE"
+    # OPENIMAGES = 'data/openimages'
+    # CITYSCAPES = ''
+    # JETS = ''
+    INSATPRESS = "data/insatpress"
 class directories(object):
     experiments = 'experiments'
 
@@ -42,8 +42,10 @@ class args(object):
     save_interval = 50000
     gpu = 0
     multigpu = True
-    dataset = Datasets.YASSINE
-    dataset_path = DatasetPaths.YASSINE
+    # dataset = Datasets.OPENIMAGES
+    # dataset_path = DatasetPaths.OPENIMAGES
+    dataset = Datasets.INSATPRESS
+    dataset_path = DatasetPaths.INSATPRESS
     shuffle = True
 
     # GAN params
@@ -62,12 +64,12 @@ class args(object):
     use_channel_norm = True
     likelihood_type = 'gaussian'    # Latent likelihood model
     normalize_input_image = False   # Normalize inputs to range [-1,1]
-    
+
     # Shapes
     crop_size = 256
     image_dims = (3,256,256)
     latent_dims = (latent_channels,16,16)
-    
+
     # Optimizer params
     learning_rate = 1e-4
     weight_decay = 1e-6
@@ -96,7 +98,7 @@ Specialized configs
 
 class mse_lpips_args(args):
     """
-    Config for model trained with distortion and 
+    Config for model trained with distortion and
     perceptual loss only.
     """
     model_type = ModelTypes.COMPRESSION
