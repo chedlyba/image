@@ -17,7 +17,7 @@ graphs/
 results/
 imgs/*.pdf
 # data/*.jpg
-data/*.png
+# data/*.png
 hific_dev/
 *.slurm
 *.tex
