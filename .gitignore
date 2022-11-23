@@ -16,7 +16,7 @@ __pycache__/
 graphs/
 results/
 imgs/*.pdf
-data/*.jpg
+# data/*.jpg
 data/*.png
 hific_dev/
 *.slurm
