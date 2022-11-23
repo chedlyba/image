@@ -17,7 +17,7 @@ DIR = os.path.abspath(os.path.dirname(__file__))
 print('Current DIR: ', DIR)
 COLOUR_BLACK = 0
 COLOUR_WHITE = 1
-NUM_DATASET_WORKERS = 1
+NUM_DATASET_WORKERS = 2
 SCALE_MIN = 0.75
 SCALE_MAX = 0.95
 DATASETS_DICT = {"openimages": "OpenImages", "cityscapes": "CityScapes", 
@@ -46,7 +46,7 @@ def exception_collate_fn(batch):
     return torch.utils.data.dataloader.default_collate(batch)
 
 def get_dataloaders(dataset, mode='train', root=None, shuffle=True, pin_memory=True, 
-                    batch_size=2, logger=logging.getLogger(__name__), normalize=False, **kwargs):
+                    batch_size=8, logger=logging.getLogger(__name__), normalize=False, **kwargs):
     """A generic data loader
 
     Parameters
