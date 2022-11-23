@@ -55,8 +55,7 @@ def optimize_compression_loss(compression_loss, amortization_opt, hyperlatent_li
     compression_loss.backward()
     amortization_opt.step()
     hyperlatent_likelihood_opt.step()
-    amortization_opt.zero_g
-    rad()
+    amortization_opt.zero_grad()
     hyperlatent_likelihood_opt.zero_grad()
 
 def test(args, model, epoch, idx, data, test_data, test_bpp, device, epoch_test_loss, storage, best_test_loss, 
@@ -259,7 +258,7 @@ if __name__ == '__main__':
         args = hific_args
 
     start_time = time.time()
-    device = "cpu" #utils.get_device()
+    device = utils.get_device()
 
     # Override default arguments from config file with provided command line arguments
     dictify = lambda x: dict((n, getattr(x, n)) for n in dir(x) if not (n.startswith('__') or 'logger' in n))
