@@ -63,6 +63,22 @@ def prepare_model(ckpt_path, input_dir):
 
     return model, loaded_args
 
+def prepare_model(ckpt_path, input_dir):
+
+    make_deterministic()
+    device = utils.get_device()
+    logger = utils.logger_setup(logpath=os.path.join(input_dir, f'logs_{time.time()}'), filepath=os.path.abspath(__file__))
+    loaded_args, model, _ = utils.load_model(ckpt_path, logger, device, model_mode=ModelModes.EVALUATION,
+        current_args_d=None, prediction=True, strict=False, silent=True)
+    model.logger.info('Model loaded from disk.')
+
+    # Build probability tables
+    model.logger.info('Building hyperprior probability tables...')
+    model.Hyperprior.hyperprior_entropy_model.build_tables()
+    model.logger.info('All tables built.')
+
+    return model, loaded_args
+
 def compress_and_save(model, args, data_loader, output_dir):
     # Compress and save compressed format to disk
 
@@ -208,6 +224,11 @@ def compress_and_decompress(args):
     logger.info('Time elapsed: {:.3f} s'.format(delta_t))
     logger.info('Rate: {:.3f} Images / s:'.format(float(N) / delta_t))
 
+
+def compress(model_path, input_dir, output_dir):
+    model, args = prepare_model(model_path, input_dir)
+    data_loader = prepare_dataloader(args, input_dir, output_dir, batch_size=1)
+    compress_and_save(model, args, data_loader, output_dir)
 
 def main(**kwargs):
 

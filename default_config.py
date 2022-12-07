@@ -37,7 +37,7 @@ class args(object):
     silent = True
     n_epochs = 8
     n_steps = 1e6
-    batch_size = 8
+    batch_size = 4
     log_interval = 1000
     save_interval = 50000
     gpu = 0

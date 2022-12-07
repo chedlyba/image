@@ -155,3 +155,11 @@ bin
 
 .DS_Store
 .idea
+
+reconstructed/
+logs/
+model/
+compressed/
+data/
+*.png
+*.jpg
